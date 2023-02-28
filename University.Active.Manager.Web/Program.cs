@@ -2,12 +2,11 @@ using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.EntityFrameworkCore;
 using University.Active.Manager.Abstraction;
 using University.Active.Manager.Entity;
 using University.Active.Manager.Services;
-using University.Active.Manager.Storage;
 using University.Active.Manager.Web.Configuration;
+using EventRepository = University.Active.Manager.Storage.EventRepository;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,7 +18,8 @@ builder.Services.AddDatabase(optionsBuilder =>
 });
 */
 builder.Services.AddRazorPages();
-builder.Services.AddScoped<IEventService, EventService>();
+builder.Services.AddTransient<IEventService, EventService>();
+builder.Services.AddTransient<IEventRepository, EventRepository>();
 builder.Services.AddSingleton(new MapperConfiguration(mc =>
 {
     mc.AddProfile<ContractProfile>();
@@ -29,9 +29,8 @@ app.Map("/", async context =>
 {
     //может вернуть Null
     var eventService = context.RequestServices.GetService<IEventService>();
-    
-    eventService?.RegisterNewEvent(new Event());
-    await context.Response.WriteAsync($"Hello World!");
+    if (eventService != null) 
+        await context.Response.WriteAsJsonAsync(await eventService.GetAllActiveEvents());
 });
 app.UseStaticFiles();
 

@@ -12,8 +12,12 @@ public class EventService : IEventService
     {
         _eventRepository = eventRepository;
     }
-    public Task<List<Event>> GetAllActiveEvents()
+    public async Task<List<Event>> GetAllActiveEvents()
     {
+
+        var addEvent = await _eventRepository.GetAllEvents();
+        return addEvent.FindAll(x => !x.IsDone);
+ 
         throw new System.NotImplementedException();
     }
 
