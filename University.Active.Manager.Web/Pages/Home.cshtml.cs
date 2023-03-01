@@ -17,9 +17,10 @@ public class Home : PageModel
     private readonly IMapper _mapper;
     public Profile Profile { get; set; }
 
-    public Home(IEventService eventService)
+    public Home(IMapper mapper, IEventService eventService)
     {
         _eventService = eventService;
+        _mapper = mapper;
     }
     public async Task OnGetAsync()
     {
@@ -39,22 +40,9 @@ public class Home : PageModel
             ProfilePhotoPath = "photo.jpg"
         };
 
-        var anyEvent = new Entity.Event()
-        {
-            Name = "Студвесна",
-            EventId = Guid.NewGuid(),
-            Place = "Уникс",
-            Quota = 10,
-            Score = 5,
-            IsDone = false,
-            Members = new List<Entity.Student>(),
-            StartDateTime = new DateTime(2023, 03, 17, 18, 0, 0),
-            EndDateTime = new DateTime(2023, 03, 17, 20, 0, 0)
-        };
+        var activeEvents = await _eventService.GetAllActiveEvents();
+        var eventsFromFront = _mapper.Map<List<Event>>(activeEvents);
         
-        
-        await _eventService.RegisterNewEvent(anyEvent);
-        
-        Profile.Events.Add(_mapper.Map<Event>(anyEvent));
+        eventsFromFront.ForEach(x => Profile.Events.Add(x));
     }
 }

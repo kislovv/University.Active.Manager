@@ -23,7 +23,7 @@ builder.Services.AddTransient<IEventRepository, EventRepository>();
 builder.Services.AddSingleton(new MapperConfiguration(mc =>
 {
     mc.AddProfile<ContractProfile>();
-}));
+}).CreateMapper());
 var app = builder.Build();
 app.Map("/", async context =>
 {
