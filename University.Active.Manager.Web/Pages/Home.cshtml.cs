@@ -1,33 +1,32 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using University.Active.Manager.Abstraction;
 using University.Active.Manager.Contracts.Event;
 using University.Active.Manager.Contracts.University;
-using University.Active.Manager.Contracts.User;
+using Profile = University.Active.Manager.Contracts.User.Profile;
 
 namespace University.Active.Manager.Web.Pages;
 
 public class Home : PageModel
 {
+    private readonly IEventService _eventService;
+    private readonly IMapper _mapper;
     public Profile Profile { get; set; }
-    
-    public void OnGet()
+
+    public Home(IMapper mapper, IEventService eventService)
+    {
+        _eventService = eventService;
+        _mapper = mapper;
+    }
+    public async Task OnGetAsync()
     {
         Profile = new Profile
         {
-            Events = new List<Event>()
-            {
-                new()
-                {
-                    Place = "Уникс",
-                    Quota = 5,
-                    Score = 2,
-                    Name = "Студенческая весна",
-                    IsDone = false,
-                    StartDateTime = new DateTime(2023, 03, 17, 18, 0, 0),
-                    EndDateTime = new DateTime(2023, 03, 17, 20, 0, 0)
-                }
-            },
+            Events = new List<Event>(),
             Score = 10,
             Student = new Student()
             {
@@ -40,5 +39,10 @@ public class Home : PageModel
             },
             ProfilePhotoPath = "photo.jpg"
         };
+
+        var activeEvents = await _eventService.GetAllActiveEvents();
+        var eventsFromFront = _mapper.Map<List<Event>>(activeEvents);
+        
+        eventsFromFront.ForEach(x => Profile.Events.Add(x));
     }
 }

@@ -18,7 +18,7 @@
     <h2> Студент @Model.Profile.Student.FirstName @Model.Profile.Student.MiddleName @Model.Profile.Student.LastName</h2>
 
     <h3>Колличество баллов : @Model.Profile.Score</h3>
-    Участвовал в мероприятиях:
+    Участвовал в мероприятиях: <br>
     @foreach (var ev in Model.Profile.Events)
     {
         @ev.Name

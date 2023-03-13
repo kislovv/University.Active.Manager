@@ -6,6 +6,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\University.Active.Manager.Contracts\University.Active.Manager.Contracts.csproj" />
+    <ProjectReference Include="..\University.Active.Manager.Storage\University.Active.Manager.Storage.csproj" />
+    <ProjectReference Include="..\University.Active.Manager\University.Active.Manager.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
   </ItemGroup>
 
 </Project>
