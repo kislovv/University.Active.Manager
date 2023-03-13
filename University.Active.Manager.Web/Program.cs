@@ -5,18 +5,15 @@ using Microsoft.Extensions.DependencyInjection;
 using University.Active.Manager.Abstraction;
 using University.Active.Manager.Entity;
 using University.Active.Manager.Services;
+using University.Active.Manager.Storage;
 using University.Active.Manager.Web.Configuration;
-using EventRepository = University.Active.Manager.Storage.EventRepository;
+using EventFakeRepository = University.Active.Manager.Storage.EventFakeRepository;
 
 
 var builder = WebApplication.CreateBuilder(args);
-/*
-builder.Services.AddDatabase(optionsBuilder =>
-{
-    optionsBuilder.UseSqlServer(builder.Configuration["App:DbConnectionString"]);
-    optionsBuilder.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
-});
-*/
+
+builder.Services.AddDatabase();
+
 builder.Services.AddRazorPages();
 builder.Services.AddTransient<IEventService, EventService>();
 builder.Services.AddTransient<IEventRepository, EventRepository>();

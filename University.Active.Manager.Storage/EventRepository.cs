@@ -1,14 +1,23 @@
+﻿using Microsoft.EntityFrameworkCore;
 using University.Active.Manager.Abstraction;
 using University.Active.Manager.Entity;
-using AutoFixture;
 
-namespace University.Active.Manager.Storage;
-
-public class EventRepository : IEventRepository
+namespace University.Active.Manager.Storage
 {
-    private readonly Fixture _fixture = new Fixture();
-    public Task<List<Event>> GetAllEvents()
+    public class EventRepository : IEventRepository
     {
-        return Task.FromResult(_fixture.Build<Event>().CreateMany(5).ToList());
+        private readonly AppDbContext _appDbContext;
+
+        public EventRepository(AppDbContext appDbContext)
+        {
+            _appDbContext = appDbContext;
+        }
+
+        public async Task<List<Event>> GetAllEvents()
+        {
+            return await _appDbContext.Events
+                .Include(ev => ev.Members)
+                .ToListAsync();
+        }
     }
 }
