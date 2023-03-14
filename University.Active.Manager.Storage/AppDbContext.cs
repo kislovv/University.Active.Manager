@@ -3,7 +3,7 @@ using University.Active.Manager.Entity;
 
 namespace University.Active.Manager.Storage;
 
-public class AppDbContext : DbContext
+public sealed class AppDbContext : DbContext
 {
     public DbSet<Event> Events => Set<Event>();
     public DbSet<Student> Students => Set<Student>();

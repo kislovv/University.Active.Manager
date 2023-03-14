@@ -23,6 +23,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BL", "BL", "{BB0A40DC-8E86-
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "University.Active.Manager.Test", "University.Active.Manager.Test\University.Active.Manager.Test.csproj", "{7FADC8E6-2F6A-45E8-B64E-3E34101F21A1}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "University.Active.Manager.Shared", "University.Active.Manager.Shared\University.Active.Manager.Shared.shproj", "{738EC7D7-3851-4A7A-B62E-321F9D1645BC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -103,5 +105,6 @@ Global
 		{FC8EF4E1-4029-4E36-89E0-F717FF03D9C9} = {BEAD224E-57B9-4D58-AF0C-607105B78395}
 		{D0755320-7070-4B86-BDCE-963363F11019} = {BB0A40DC-8E86-4A40-BD1F-FDC39BC72605}
 		{7FADC8E6-2F6A-45E8-B64E-3E34101F21A1} = {E699D700-635F-4C3A-8B1D-4EE4E8748FD7}
+		{738EC7D7-3851-4A7A-B62E-321F9D1645BC} = {BEAD224E-57B9-4D58-AF0C-607105B78395}
 	EndGlobalSection
 EndGlobal
