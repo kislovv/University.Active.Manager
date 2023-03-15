@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using University.Active.Manager.Entity;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace University.Active.Manager.Storage;
 
@@ -9,7 +10,7 @@ public sealed class AppDbContext : DbContext
     public DbSet<Student> Students => Set<Student>();
     public DbSet<Institute> Institutes => Set<Institute>();
     public DbSet<Subject> Subjects => Set<Subject>();
-
+    
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
     {
         Database.EnsureCreated();
@@ -20,4 +21,11 @@ public sealed class AppDbContext : DbContext
         optionsBuilder.UseSqlite("Data Source=appmanager.db");
     }
 
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<Institute>().Property(inst => inst.Specialty)
+            .HasConversion(v => v.ToString(),
+                v => (Specialty)Enum.Parse(typeof(Specialty), v))
+            .HasMaxLength(256);
+    }
 }

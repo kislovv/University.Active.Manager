@@ -1,3 +1,5 @@
+using University.Active.Manager.Abstraction;
+
 namespace University.Active.Manager.Storage;
 
 using Microsoft.Extensions.DependencyInjection;
@@ -13,6 +15,8 @@ public static class Entry
     /// <returns>IServiceCollection</returns>
     public static IServiceCollection AddDatabase(this IServiceCollection serviceCollection)
     {
+        serviceCollection.AddTransient<IEventRepository, EventRepository>();
+        serviceCollection.AddTransient<ISubjectRepository, SubjectRepository>();
         return serviceCollection.AddDbContext<AppDbContext>(optionsAction => 
         {
             optionsAction.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);

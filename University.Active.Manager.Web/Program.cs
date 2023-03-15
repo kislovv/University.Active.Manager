@@ -21,8 +21,7 @@ builder.Services.AddRazorPages();
 
 //Примеры сервисов (Event и репозитория)
 builder.Services.AddTransient<IEventService, EventService>();
-builder.Services.AddTransient<IEventRepository, EventRepository>();
-builder.Services.AddTransient<ISubjectRepository, SubjectRepository>();
+
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -32,7 +31,6 @@ builder.Services.AddSingleton(new MapperConfiguration(mc =>
 {
     mc.AddProfile<ContractProfile>();
 }).CreateMapper());
-
 
 var app = builder.Build();
 
