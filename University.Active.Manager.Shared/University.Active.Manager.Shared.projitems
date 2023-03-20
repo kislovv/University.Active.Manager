@@ -9,6 +9,11 @@
     <Import_RootNamespace>University.Active.Manager.Shared</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)Class1.cs"/>
+    <Compile Include="$(MSBuildThisFileDirectory)CourseType.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)InstituteMeta.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProfileMeta.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Speciality.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)StudentMeta.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SubjectMeta.cs" />
   </ItemGroup>
 </Project>

@@ -9,5 +9,7 @@
     <ProjectReference Include="..\University.Active.Manager.Contracts\University.Active.Manager.Contracts.csproj" />
   </ItemGroup>
 
+  <Import Project="..\University.Active.Manager.Shared\University.Active.Manager.Shared.projitems" Label="Shared" />
+
 
 </Project>

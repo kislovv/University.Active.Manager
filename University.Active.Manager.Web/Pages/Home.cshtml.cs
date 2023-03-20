@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -32,7 +30,7 @@ public class Home : PageModel
             {
                 Course = 2,
                 Institute = new Institute(),
-                CourseType = CourseType.Bachelor,
+                CourseType = (Contracts.University.CourseType)CourseType.Bachelor,
                 FirstName = "Кирилл",
                 LastName = "Алексеевич",
                 MiddleName = "Кислов"

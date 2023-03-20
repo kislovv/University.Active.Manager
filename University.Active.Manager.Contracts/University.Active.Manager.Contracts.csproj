@@ -4,6 +4,9 @@
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>disable</Nullable>
+        <DefineConstants>TRACE;CONTRACT_ASSEMBLY</DefineConstants>
     </PropertyGroup>
+
+    <Import Project="..\University.Active.Manager.Shared\University.Active.Manager.Shared.projitems" Label="Shared" />
 
 </Project>
