@@ -8,4 +8,8 @@ public class Profile
     public string ProfilePhotoPath { get; set; }
     public ICollection<Event.Event> Events { get; set; }
     public uint Score { get; set; }
+
+    public string Email { get; set; }
+
+    public string Password { get; set; }
 }

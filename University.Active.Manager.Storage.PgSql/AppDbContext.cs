@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using University.Active.Manager.Entity;
+using University.Active.Manager.Storage.PgSql.Configuration;
 
 namespace University.Active.Manager.Storage.PgSql;
 
@@ -10,8 +11,13 @@ public class AppDbContext : DbContext
     public DbSet<Institute> Institutes => Set<Institute>();
     public DbSet<Subject> Subjects => Set<Subject>();
     
-    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
+    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
+
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.ApplyConfiguration(new EventEntityConfiguration());
         
+        base.OnModelCreating(modelBuilder);
     }
 }

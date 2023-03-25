@@ -1,10 +1,10 @@
-﻿using System.Globalization;
-using Microsoft.Extensions.Configuration;
-
-namespace University.Active.Manager.Storage.PgSql;
+﻿namespace University.Active.Manager.Storage.PgSql;
 
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
+using System.Globalization;
+using Microsoft.Extensions.Configuration;
+using Abstraction;
 
 public static class Entry
 {
@@ -16,8 +16,8 @@ public static class Entry
     /// <returns>IServiceCollection</returns>
     public static IServiceCollection AddDatabase(this IServiceCollection serviceCollection, IConfiguration configuration)
     {
-        //serviceCollection.AddTransient<IEventRepository, EventRepository>();
-        //serviceCollection.AddTransient<ISubjectRepository, SubjectRepository>();
+        serviceCollection.AddTransient<IEventRepository, EventRepository>();
+        serviceCollection.AddTransient<ISubjectRepository, SubjectRepository>();
         return serviceCollection.AddDbContext<AppDbContext>(optionsAction => 
         {
             optionsAction.UseNpgsql(configuration["App:DbConnection"]);

@@ -2,7 +2,6 @@
 {
     public class Event
     {
-        public uint Quota { get; set; }
         public bool IsDone { get; set; }
         public uint Score { get; set; }
         public DateTime StartDateTime { get; set; }

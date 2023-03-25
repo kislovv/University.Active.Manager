@@ -23,7 +23,7 @@ public class EventServiceTest
     {
         //stub
         var events = _fixture.Build<Event>()
-            .Without(x=> x.Members).CreateMany(5).ToList();
+            .Without(x=> x.Students).CreateMany(5).ToList();
         
         //Делаем 1 завершеным чтобы проверить что 1 запись точно не вернется в результате
         events[0].IsDone = true;

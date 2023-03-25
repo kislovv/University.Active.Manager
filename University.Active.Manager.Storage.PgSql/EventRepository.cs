@@ -2,7 +2,7 @@
 using University.Active.Manager.Abstraction;
 using University.Active.Manager.Entity;
 
-namespace University.Active.Manager.Storage
+namespace University.Active.Manager.Storage.PgSql
 {
     public class EventRepository : IEventRepository
     {
