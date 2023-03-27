@@ -10,6 +10,9 @@ public class AppDbContext : DbContext
     public DbSet<Student> Students => Set<Student>();
     public DbSet<Institute> Institutes => Set<Institute>();
     public DbSet<Subject> Subjects => Set<Subject>();
+    public DbSet<EventRole> Roles => Set<EventRole>();
+    public DbSet<Profile> Profiles => Set<Profile>();
+    public DbSet<UniversityAdministrator> Administrators => Set<UniversityAdministrator>();
     
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 

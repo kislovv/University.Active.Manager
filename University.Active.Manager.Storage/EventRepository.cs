@@ -19,5 +19,10 @@ namespace University.Active.Manager.Storage
                 .Include(ev => ev.Students)
                 .ToListAsync();
         }
+
+        public Task<Event> AddEvent(Event ev)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

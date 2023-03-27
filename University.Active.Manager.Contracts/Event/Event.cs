@@ -1,4 +1,6 @@
-﻿namespace University.Active.Manager.Contracts.Event
+﻿using University.Active.Manager.Contracts.University;
+
+namespace University.Active.Manager.Contracts.Event
 {
     public class Event
     {
@@ -8,6 +10,8 @@
         public DateTime EndDateTime { get; set; }
         public string Place { get; set; }
         public string Name { get; set; }
+        public List<Student> Members { get; set; }
+        public UniversityAdministrator Creator { get; set; }
     }    
 }
 

@@ -14,6 +14,7 @@ public class Home : PageModel
     private readonly IEventService _eventService;
     private readonly IMapper _mapper;
     public Profile Profile { get; set; }
+    public Student Student { get; set; }
 
     public Home(IMapper mapper, IEventService eventService)
     {
@@ -25,16 +26,6 @@ public class Home : PageModel
         Profile = new Profile
         {
             Events = new List<Event>(),
-            Score = 10,
-            Student = new Student()
-            {
-                Course = 2,
-                Institute = new Institute(),
-                CourseType = (Contracts.University.CourseType)CourseType.Bachelor,
-                FirstName = "Кирилл",
-                LastName = "Алексеевич",
-                MiddleName = "Кислов"
-            },
             ProfilePhotoPath = "photo.jpg"
         };
 

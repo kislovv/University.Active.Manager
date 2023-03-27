@@ -3,18 +3,20 @@ using System.Collections.Generic;
 
 namespace University.Active.Manager.Entity;
 
-public class Student
+/// <summary>
+/// Модель студента
+/// </summary>
+public class Student : Profile
 {
-    public Guid Id { get; set; }
-    public string FirstName { get; set; }
-    public string LastName { get; set; }
-    public string MiddleName { get; set; }
+    /// <summary>
+    /// Курс
+    /// </summary>
     public byte Course { get; set; }
     
+    /// <summary>
+    /// Форма обучения
+    /// </summary>
     public CourseType CourseType { get; set; }
+
     
-    public long InstituteId { get; set; }
-    public Institute Institute { get; set; }
-    
-    public List<Event> Events { get; set; }
 }

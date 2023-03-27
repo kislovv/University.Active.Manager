@@ -7,4 +7,6 @@ namespace University.Active.Manager.Abstraction;
 public interface IEventRepository
 {
     Task<List<Event>> GetAllEvents();
+
+    Task<Event> AddEvent(Event ev);
 }

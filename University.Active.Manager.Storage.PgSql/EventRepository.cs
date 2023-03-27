@@ -19,5 +19,12 @@ namespace University.Active.Manager.Storage.PgSql
                 .Include(ev => ev.Students)
                 .ToListAsync();
         }
+
+        public async Task<Event> AddEvent(Event ev)
+        {
+            var result = await _appDbContext.Events.AddAsync(ev);
+            
+            return result.Entity;
+        }
     }
 }

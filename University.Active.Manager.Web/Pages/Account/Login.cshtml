@@ -1,0 +1,19 @@
+@page
+@model University.Active.Manager.Web.Pages.Account.Login
+
+@{
+    Layout = "Shared/_Layout";
+}
+
+<div>
+    <form method="post">
+        <p><label>login</label><br />
+            <input name="login" />
+        </p>
+        <p>
+            <label>password</label><br />
+            <input name="password" type="password" />
+        </p>
+        <input type="submit" value="Отправить" />
+    </form>
+</div>

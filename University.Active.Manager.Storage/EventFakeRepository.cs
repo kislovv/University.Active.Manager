@@ -11,4 +11,9 @@ public class EventFakeRepository : IEventRepository
     {
         return Task.FromResult(_fixture.Build<Event>().CreateMany(5).ToList());
     }
+
+    public Task<Event> AddEvent(Event ev)
+    {
+        throw new NotImplementedException();
+    }
 }
