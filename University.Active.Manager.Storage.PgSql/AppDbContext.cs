@@ -20,6 +20,11 @@ public class AppDbContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfiguration(new EventEntityConfiguration());
+        modelBuilder.ApplyConfiguration(new EventRoleEntityConfiguration());
+        modelBuilder.ApplyConfiguration(new InstituteEntityConfiguration());
+        modelBuilder.ApplyConfiguration(new ProfileEntityConfiguration());
+        modelBuilder.ApplyConfiguration(new SubjectEntityConfiguration());
+        
         
         base.OnModelCreating(modelBuilder);
     }

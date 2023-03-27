@@ -23,4 +23,9 @@ public class ProfileMeta
     /// Максимальная длина названия роли
     /// </summary>
     public const int RoleMaxLength = 100;
+    
+    /// <summary>
+    /// Максимальная длина названия типа профиля
+    /// </summary>
+    public const int ProfileTypeMaxLength = 256;
 }

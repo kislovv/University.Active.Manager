@@ -16,13 +16,17 @@ namespace University.Active.Manager.Storage.PgSql
         public async Task<List<Event>> GetAllEvents()
         {
             return await _appDbContext.Events
+                .AsNoTracking()
                 .Include(ev => ev.Students)
+                .Include(ev=> ev.Creator)
+                .Include(ev => ev.EventRoles)
                 .ToListAsync();
         }
 
         public async Task<Event> AddEvent(Event ev)
         {
             var result = await _appDbContext.Events.AddAsync(ev);
+            await _appDbContext.SaveChangesAsync();
             
             return result.Entity;
         }

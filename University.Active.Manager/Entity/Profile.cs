@@ -6,7 +6,7 @@ namespace University.Active.Manager.Entity;
 /// <summary>
 /// Модель профиля пользователя
 /// </summary>
-public class Profile
+public abstract class Profile
 {
     /// <summary>
     /// Идентификатор профиля

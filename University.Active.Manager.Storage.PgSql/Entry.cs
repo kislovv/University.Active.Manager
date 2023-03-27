@@ -11,19 +11,19 @@ public static class Entry
     /// <summary>
     /// Добавления зависимостей для работы с БД
     /// </summary>
-    /// <param name="serviceCollection">serviceCollection</param>
-    /// <param name="optionsAction">optionsAction</param>
+    /// <param name="serviceCollection">Коллекция сервисов</param>
+    /// <param name="configuration">Конфигурация приложения</param>
     /// <returns>IServiceCollection</returns>
     public static IServiceCollection AddDatabase(this IServiceCollection serviceCollection, IConfiguration configuration)
     {
         serviceCollection.AddTransient<IEventRepository, EventRepository>();
         serviceCollection.AddTransient<ISubjectRepository, SubjectRepository>();
+        serviceCollection.AddTransient<IProfileRepository, ProfileRepository>();
         return serviceCollection.AddDbContext<AppDbContext>(optionsAction => 
         {
-            optionsAction.UseNpgsql(configuration["App:DbConnection"]);
+            optionsAction.UseNpgsql(configuration["App:DbConnectionString"]);
             optionsAction.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
             optionsAction.UseSnakeCaseNamingConvention(CultureInfo.CurrentCulture);
-            
         });
     }
 }

@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\University.Active.Manager.Contracts\University.Active.Manager.Contracts.csproj" />
+    <ProjectReference Include="..\University.Active.Manager.Storage.PgSql\University.Active.Manager.Storage.PgSql.csproj" />
     <ProjectReference Include="..\University.Active.Manager.Storage\University.Active.Manager.Storage.csproj" />
     <ProjectReference Include="..\University.Active.Manager\University.Active.Manager.csproj" />
   </ItemGroup>

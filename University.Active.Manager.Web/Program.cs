@@ -6,7 +6,8 @@ using Microsoft.Extensions.Hosting;
 using University.Active.Manager.Abstraction;
 using University.Active.Manager.Entity;
 using University.Active.Manager.Services;
-using University.Active.Manager.Storage;
+using University.Active.Manager.Storage.PgSql;
+using University.Active.Manager.Utilities;
 using University.Active.Manager.Web.Configuration;
 using Contract =  University.Active.Manager.Contracts;
 
@@ -14,7 +15,7 @@ using Contract =  University.Active.Manager.Contracts;
 var builder = WebApplication.CreateBuilder(args);
 
 //Добавление БД (метод расширения в проекте Storage)
-builder.Services.AddDatabase();
+builder.Services.AddDatabase(builder.Configuration);
 
 //Поддержка Razor pages
 builder.Services.AddRazorPages();
@@ -31,6 +32,9 @@ builder.Services.AddSingleton(new MapperConfiguration(mc =>
 {
     mc.AddProfile<ContractProfile>();
 }).CreateMapper());
+
+builder.Services.Configure<HashOptions>(builder.Configuration.GetSection("Hash"));
+builder.Services.AddSingleton<HashHelper>();
 
 var app = builder.Build();
 
@@ -55,6 +59,14 @@ app.MapPost("/addSubject", async (Contract.University.Subject subject, ISubjectR
     
     return Results.Ok(mapper.Map<Contract.University.Subject>(result));
 });
+
+app.MapPost("/addInstitute",
+    async (Contract.University.Institute institute, IInstituteRepository instituteRepository, IMapper mapper) =>
+    {
+        var result = await instituteRepository.AddInstitute(mapper.Map<Institute>(institute));
+        
+        return Results.Ok(mapper.Map<Contract.University.Institute>(result));
+    });
 
 //Подключение в цепочку статических файлов
 app.UseStaticFiles();
