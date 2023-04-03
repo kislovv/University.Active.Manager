@@ -15,7 +15,7 @@ public class ProfileService : IProfileService
         _profileRepository = profileRepository;
         _hashHelper = hashHelper;
     }
-    public async Task<Profile> SaveProfile(Profile profile)
+    public async Task<User> SaveProfile(User profile)
     {
         profile.Password = _hashHelper.GetHashPassword(profile.Password);
         var result = await _profileRepository.AddProfile(profile);
@@ -23,7 +23,7 @@ public class ProfileService : IProfileService
         return result;
     }
 
-    public Task<Profile> Login(string login, string password)
+    public Task<User> Login(string login, string password)
     {
         throw new System.NotImplementedException();
     }

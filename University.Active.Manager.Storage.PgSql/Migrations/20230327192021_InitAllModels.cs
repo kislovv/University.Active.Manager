@@ -56,7 +56,7 @@ namespace University.Active.Manager.Storage.PgSql.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Profiles",
+                name: "Users",
                 columns: table => new
                 {
                     id = table.Column<Guid>(type: "uuid", nullable: false),
@@ -127,7 +127,7 @@ namespace University.Active.Manager.Storage.PgSql.Migrations
                     table.ForeignKey(
                         name: "fk_events_profiles_creator_id",
                         column: x => x.creator_id,
-                        principalTable: "Profiles",
+                        principalTable: "Users",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -175,7 +175,7 @@ namespace University.Active.Manager.Storage.PgSql.Migrations
                     table.ForeignKey(
                         name: "fk_event_student_profiles_students_id",
                         column: x => x.students_id,
-                        principalTable: "Profiles",
+                        principalTable: "Users",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -202,7 +202,7 @@ namespace University.Active.Manager.Storage.PgSql.Migrations
 
             migrationBuilder.CreateIndex(
                 name: "ix_profiles_institute_id",
-                table: "Profiles",
+                table: "Users",
                 column: "institute_id");
         }
 
@@ -228,7 +228,7 @@ namespace University.Active.Manager.Storage.PgSql.Migrations
                 name: "subjects");
 
             migrationBuilder.DropTable(
-                name: "Profiles");
+                name: "Users");
 
             migrationBuilder.DropTable(
                 name: "institutes");

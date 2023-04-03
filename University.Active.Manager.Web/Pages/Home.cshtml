@@ -8,17 +8,8 @@
 }
 
 <div class="container">
-    <h2> Студент @Model.Student.FirstName @Model.Student.MiddleName @Model.Student.LastName</h2>
+    <h2> Студент </h2>
 
-    <h3>Колличество баллов : @Model.Student.Score</h3>
+    <h3>Колличество баллов : </h3>
     Участвовал в мероприятиях: <br>
-    @foreach (var ev in Model.Profile.Events)
-    {
-        @ev.Name
-        <br>
-    }
-    <figure class="figure">
-      <img src="@Model.Profile.ProfilePhotoPath" class="figure-img img-fluid rounded" alt="Фото профиля" width="15%" height="15%">
-      <figcaption class="figure-caption">Фото профиля</figcaption>
-    </figure>
 </div>

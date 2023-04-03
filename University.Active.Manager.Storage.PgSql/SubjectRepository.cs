@@ -24,7 +24,7 @@ public class SubjectRepository : ISubjectRepository
     public async Task<Subject> GetSubjectById(long id)
     {
         return await _appDbContext.Subjects
-            .Include(sub => sub.Insitutes)
+            .Include(sub => sub.Insitute)
             .FirstOrDefaultAsync(sub => sub.Id == id) ?? throw new InvalidOperationException();
     }
 

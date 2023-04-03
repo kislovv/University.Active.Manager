@@ -1,5 +1,5 @@
 ﻿#if CONTRACT_ASSEMBLY
-namespace University.Active.Manager.Contracts.University;
+namespace University.Active.Manager.Contracts;
 #else
 namespace University.Active.Manager.Entity;
 #endif

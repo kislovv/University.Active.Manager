@@ -11,28 +11,25 @@ public class ProfileRepository : IProfileRepository
     {
         _dbContext = dbContext;
     }
-    public async Task<Profile?> GetProfileByLogin(string login)
+    public async Task<User?> GetProfileByLogin(string login)
     {
-        return await _dbContext.Profiles
-            .AsNoTracking()
-            .Include(p => p.Events)
-            .Include(p => p.Institute)
-            .ThenInclude(i => i.Subjects).SingleOrDefaultAsync(p => p.Login == login);
+        return await _dbContext.Users
+            .AsNoTracking().SingleOrDefaultAsync(p => p.Login == login);
     }
 
-    public async Task<Profile> AddProfile(Profile profile)
+    public async Task<User> AddProfile(User profile)
     {
-        var result = await _dbContext.Profiles.AddAsync(profile);
+        var result = await _dbContext.Users.AddAsync(profile);
         await _dbContext.SaveChangesAsync();
 
         return result.Entity;
     }
 
-    public async Task<Profile?> GetProfileById(Guid id)
+    public async Task<User?> GetProfileById(Guid id)
     {
-        return await _dbContext.Profiles
+        return await _dbContext.Users
             .AsNoTracking()
-            .Include(p => p.Events)
+            .Include(p => p.ParticipantEvents)
             .Include(p => p.Institute)
             .ThenInclude(i => i.Subjects).SingleOrDefaultAsync(p => p.Id == id);
     }

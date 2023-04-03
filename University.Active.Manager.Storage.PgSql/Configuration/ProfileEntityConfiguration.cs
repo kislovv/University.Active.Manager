@@ -4,19 +4,11 @@ using University.Active.Manager.Entity;
 
 namespace University.Active.Manager.Storage.PgSql.Configuration;
 
-public class ProfileEntityConfiguration : IEntityTypeConfiguration<Profile>
+public class ProfileEntityConfiguration : IEntityTypeConfiguration<User>
 {
-    public void Configure(EntityTypeBuilder<Profile> builder)
+    public void Configure(EntityTypeBuilder<User> builder)
     {
-        builder.HasDiscriminator(x => x.ProfileType)
-            .HasValue<Student>(ProfileType.Student)
-            .HasValue<UniversityAdministrator>(ProfileType.UniversityAdministration);
         
-        builder.Property(x=> x.ProfileType).HasConversion(v => v.ToString(), 
-                v => (ProfileType)Enum.Parse(typeof(ProfileType), v))
-            .HasMaxLength(ProfileMeta.ProfileTypeMaxLength)
-            .IsRequired();
-
         builder.Property(x => x.Email)
             .HasMaxLength(ProfileMeta.EmailMaxLength)
             .IsRequired();
@@ -29,7 +21,7 @@ public class ProfileEntityConfiguration : IEntityTypeConfiguration<Profile>
         
         builder.Property(x => x.Role)
             .HasMaxLength(ProfileMeta.RoleMaxLength)
-            .HasDefaultValue("student");
+            .HasDefaultValue("Student");
         
         builder.Property(x => x.FirstName)
             .IsRequired();

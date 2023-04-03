@@ -1,5 +1,4 @@
 @page
-@using University.Active.Manager.Contracts.User
 @model University.Active.Manager.Web.Pages.Account.SignUp
 
 @{
@@ -8,52 +7,38 @@
 <div>
     <form method="post">
         <p>
-            <label asp-for="Profile.ProfileType">Тип профиля</label>
-                    
-            <select asp-for ="@Model.Profile.ProfileType">
-                          
-                @foreach (var profileType in Enum.GetValues(typeof(ProfileType)))
-                {
-                            
-                    <option value="@profileType">@profileType</option>
-                }
-            </select>
+            <label asp-for="UserModel.FirstName">Имя</label><br/>
+            <input asp-for="UserModel.FirstName" />
         </p>
         <p>
-            <label asp-for="Profile.FirstName">Имя</label><br/>
-            <input asp-for="Profile.FirstName"/>
+            <label asp-for="UserModel.LastName">Фамилия</label><br />
+            <input asp-for="UserModel.LastName" />
         </p>
         <p>
-            <label asp-for="Profile.LastName">Фамилия</label><br/>
-            <input asp-for="Profile.LastName"/>
-        </p>
-        <p>
-            <label asp-for="Profile.MiddleName">Отчество</label><br/>
-            <input asp-for="Profile.MiddleName"/>
+            <label asp-for="UserModel.MiddleName">Отчество</label><br />
+            <input asp-for="UserModel.MiddleName" />
         </p>
         
-        <select asp-for="@Model.Profile.Institute" >
+        <select asp-for="Institutes">
                               
             @foreach (var institute in Model.Institutes)
-            {
-                        
+            {          
                 <option value="@institute.Value">@institute.Text</option>
             }
         </select>
-        
         <p>
-            <label>Курс:</label><br/>
-            <input name="course" type="number"/>
+            <label asp-for="UserModel.Email">Почта</label><br />
+            <input asp-for="UserModel.Email" type="email" />
+        </p>
+
+        <p>
+            <label asp-for="UserModel.Password">Почта</label><br />
+            <input asp-for="UserModel.Password" type="password" />
         </p>
         <p>
-            <label>Курс:</label><br/>
-            <input name="course" type="number"/>
+            <label asp-for="UserModel.Password">Почта</label><br />
+            <input asp-for="UserModel.Password" type="password" />
         </p>
-        <p>
-            <label>Курс:</label><br/>
-            <input name="course" type="number"/>
-        </p>
-        <label for="institute">Институт</label>
         
 
         <input type="submit" value="Отправить"/>

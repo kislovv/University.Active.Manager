@@ -4,7 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using University.Active.Manager.Abstraction;
-using Profile = University.Active.Manager.Contracts.User.Profile;
+using University.Active.Manager.Contracts.User;
+using University.Active.Manager.Entity;
 
 namespace University.Active.Manager.Web.Pages.Account;
 
@@ -17,8 +18,8 @@ public class SignUp : PageModel
     public SelectList Institutes { get; set; }
 
     [BindProperty]
-    public Profile Profile { get; set; }
-    
+    public UserRegistrationModel UserModel { get; set; }
+
     public SignUp(IInstituteRepository instituteRepository, IProfileService profileService, IMapper mapper)
     {
         _instituteRepository = instituteRepository;
@@ -32,8 +33,10 @@ public class SignUp : PageModel
 
     public async Task OnPostAsync()
     {
-        Profile.Role = Profile.ProfileType.ToString();
-        var result = await _profileService.SaveProfile(_mapper.Map<Entity.Profile>(Profile));
+        var user = _mapper.Map<User>(UserModel);
+        user.Institute = Institutes.SelectedValue as Institute;
+        
+        await _profileService.SaveProfile(user);
         
         Redirect("Login");
     }

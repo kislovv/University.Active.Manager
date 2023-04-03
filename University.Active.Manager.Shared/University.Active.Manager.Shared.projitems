@@ -14,7 +14,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)EventRoleMeta.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)InstituteMeta.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ProfileMeta.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ProfileType.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Roles.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Speciality.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)StudentMeta.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SubjectMeta.cs" />

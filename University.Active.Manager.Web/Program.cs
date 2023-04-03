@@ -9,7 +9,6 @@ using University.Active.Manager.Services;
 using University.Active.Manager.Storage.PgSql;
 using University.Active.Manager.Utilities;
 using University.Active.Manager.Web.Configuration;
-using Contract =  University.Active.Manager.Contracts;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -53,19 +52,19 @@ app.Map("/", async context =>
         await context.Response.WriteAsJsonAsync(await eventService.GetAllActiveEvents());
 });
 
-app.MapPost("/addSubject", async (Contract.University.Subject subject, ISubjectRepository subjectRepository, IMapper mapper) =>
+app.MapPost("/addSubject", async (Subject subject, ISubjectRepository subjectRepository, IMapper mapper) =>
 {
-    var result = await subjectRepository.AddSubject(mapper.Map<Subject>(subject));
+    var result = await subjectRepository.AddSubject(subject);
     
-    return Results.Ok(mapper.Map<Contract.University.Subject>(result));
+    return Results.Ok(result);
 });
 
 app.MapPost("/addInstitute",
-    async (Contract.University.Institute institute, IInstituteRepository instituteRepository, IMapper mapper) =>
+    async (Institute institute, IInstituteRepository instituteRepository, IMapper mapper) =>
     {
         var result = await instituteRepository.AddInstitute(mapper.Map<Institute>(institute));
         
-        return Results.Ok(mapper.Map<Contract.University.Institute>(result));
+        return Results.Ok(result);
     });
 
 //Подключение в цепочку статических файлов

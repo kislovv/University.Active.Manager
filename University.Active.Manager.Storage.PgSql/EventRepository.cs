@@ -17,7 +17,7 @@ namespace University.Active.Manager.Storage.PgSql
         {
             return await _appDbContext.Events
                 .AsNoTracking()
-                .Include(ev => ev.Students)
+                .Include(ev => ev.Participants)
                 .Include(ev=> ev.Creator)
                 .Include(ev => ev.EventRoles)
                 .ToListAsync();

@@ -7,12 +7,10 @@ namespace University.Active.Manager.Storage.PgSql;
 public class AppDbContext : DbContext
 {
     public DbSet<Event> Events => Set<Event>();
-    public DbSet<Student> Students => Set<Student>();
     public DbSet<Institute> Institutes => Set<Institute>();
     public DbSet<Subject> Subjects => Set<Subject>();
     public DbSet<EventRole> Roles => Set<EventRole>();
-    public DbSet<Profile> Profiles => Set<Profile>();
-    public DbSet<UniversityAdministrator> Administrators => Set<UniversityAdministrator>();
+    public DbSet<User> Users => Set<User>();
     
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 

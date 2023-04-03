@@ -22,7 +22,13 @@ public class Subject
     public Specialty Specialty { get; set; }
     
     /// <summary>
-    /// Институты в которых есть этот предмет
+    /// Институт в котором есть этот предмет
     /// </summary>
-    public List<Institute> Insitutes { get; set; }
+    public Institute Insitute { get; set; }
+    public long InsituteId { get; set; }
+
+    /// <summary>
+    /// Максимальный балл доступный для списания по этому предмету
+    /// </summary>
+    public uint MaxScore { get; set; }
 }

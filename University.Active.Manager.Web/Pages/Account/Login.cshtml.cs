@@ -6,8 +6,6 @@ namespace University.Active.Manager.Web.Pages.Account;
 
 public class Login : PageModel
 {
-    [BindProperty]
-    public Profile Profile { get; set; }
     public Login()
     {
         

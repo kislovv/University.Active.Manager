@@ -1,19 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26124.0
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "University.Active.Manager", "University.Active.Manager\University.Active.Manager.csproj", "{D0755320-7070-4B86-BDCE-963363F11019}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "University.Active.Manager", "University.Active.Manager\University.Active.Manager.csproj", "{D0755320-7070-4B86-BDCE-963363F11019}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "University.Active.Manager.Web", "University.Active.Manager.Web\University.Active.Manager.Web.csproj", "{FC8EF4E1-4029-4E36-89E0-F717FF03D9C9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "University.Active.Manager.Web", "University.Active.Manager.Web\University.Active.Manager.Web.csproj", "{FC8EF4E1-4029-4E36-89E0-F717FF03D9C9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{09337859-E56E-4555-B0C3-3F6D78DF9496}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "University.Active.Manager.Contracts", "University.Active.Manager.Contracts\University.Active.Manager.Contracts.csproj", "{D6C80ECE-189D-4C95-8EAC-6D12199F09F0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "University.Active.Manager.Contracts", "University.Active.Manager.Contracts\University.Active.Manager.Contracts.csproj", "{D6C80ECE-189D-4C95-8EAC-6D12199F09F0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "External", "External", "{968C6F3C-50D9-4493-A167-EA46133615D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "University.Active.Manager.Storage", "University.Active.Manager.Storage\University.Active.Manager.Storage.csproj", "{1620535C-E93F-49EA-B460-5E3E37CBC386}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "University.Active.Manager.Storage", "University.Active.Manager.Storage\University.Active.Manager.Storage.csproj", "{1620535C-E93F-49EA-B460-5E3E37CBC386}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Host", "Host", "{BEAD224E-57B9-4D58-AF0C-607105B78395}"
 EndProject
@@ -21,11 +21,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{E699D700-6
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BL", "BL", "{BB0A40DC-8E86-4A40-BD1F-FDC39BC72605}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "University.Active.Manager.Test", "University.Active.Manager.Test\University.Active.Manager.Test.csproj", "{7FADC8E6-2F6A-45E8-B64E-3E34101F21A1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "University.Active.Manager.Test", "University.Active.Manager.Test\University.Active.Manager.Test.csproj", "{7FADC8E6-2F6A-45E8-B64E-3E34101F21A1}"
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "University.Active.Manager.Shared", "University.Active.Manager.Shared\University.Active.Manager.Shared.shproj", "{738EC7D7-3851-4A7A-B62E-321F9D1645BC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "University.Active.Manager.Storage.PgSql", "University.Active.Manager.Storage.PgSql\University.Active.Manager.Storage.PgSql.csproj", "{E9478AC6-D4CB-4335-994D-6796C88E1C4A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "University.Active.Manager.Storage.PgSql", "University.Active.Manager.Storage.PgSql\University.Active.Manager.Storage.PgSql.csproj", "{E9478AC6-D4CB-4335-994D-6796C88E1C4A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,9 +35,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{D0755320-7070-4B86-BDCE-963363F11019}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -113,13 +110,24 @@ Global
 		{E9478AC6-D4CB-4335-994D-6796C88E1C4A}.Release|x86.ActiveCfg = Release|Any CPU
 		{E9478AC6-D4CB-4335-994D-6796C88E1C4A}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{D0755320-7070-4B86-BDCE-963363F11019} = {BB0A40DC-8E86-4A40-BD1F-FDC39BC72605}
+		{FC8EF4E1-4029-4E36-89E0-F717FF03D9C9} = {BEAD224E-57B9-4D58-AF0C-607105B78395}
 		{D6C80ECE-189D-4C95-8EAC-6D12199F09F0} = {09337859-E56E-4555-B0C3-3F6D78DF9496}
 		{1620535C-E93F-49EA-B460-5E3E37CBC386} = {968C6F3C-50D9-4493-A167-EA46133615D5}
-		{FC8EF4E1-4029-4E36-89E0-F717FF03D9C9} = {BEAD224E-57B9-4D58-AF0C-607105B78395}
-		{D0755320-7070-4B86-BDCE-963363F11019} = {BB0A40DC-8E86-4A40-BD1F-FDC39BC72605}
 		{7FADC8E6-2F6A-45E8-B64E-3E34101F21A1} = {E699D700-635F-4C3A-8B1D-4EE4E8748FD7}
 		{738EC7D7-3851-4A7A-B62E-321F9D1645BC} = {BEAD224E-57B9-4D58-AF0C-607105B78395}
 		{E9478AC6-D4CB-4335-994D-6796C88E1C4A} = {968C6F3C-50D9-4493-A167-EA46133615D5}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A06A73DD-98E1-4335-9CA2-A7BB9E90E4B9}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		University.Active.Manager.Shared\University.Active.Manager.Shared.projitems*{738ec7d7-3851-4a7a-b62e-321f9d1645bc}*SharedItemsImports = 13
+		University.Active.Manager.Shared\University.Active.Manager.Shared.projitems*{d0755320-7070-4b86-bdce-963363f11019}*SharedItemsImports = 5
+		University.Active.Manager.Shared\University.Active.Manager.Shared.projitems*{d6c80ece-189d-4c95-8eac-6d12199f09f0}*SharedItemsImports = 5
 	EndGlobalSection
 EndGlobal

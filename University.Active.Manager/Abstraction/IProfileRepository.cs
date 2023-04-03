@@ -6,7 +6,7 @@ namespace University.Active.Manager.Abstraction;
 
 public interface IProfileRepository
 {
-    Task<Profile> GetProfileByLogin(string login);
-    Task<Profile> AddProfile(Profile profile);
-    Task<Profile> GetProfileById(Guid id);
+    Task<User> GetProfileByLogin(string login);
+    Task<User> AddProfile(User profile);
+    Task<User> GetProfileById(Guid id);
 }

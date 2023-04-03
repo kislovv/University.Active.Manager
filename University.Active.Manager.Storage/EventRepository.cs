@@ -16,7 +16,7 @@ namespace University.Active.Manager.Storage
         public async Task<List<Event>> GetAllEvents()
         {
             return await _appDbContext.Events
-                .Include(ev => ev.Students)
+                .Include(ev => ev.Participants)
                 .ToListAsync();
         }
 

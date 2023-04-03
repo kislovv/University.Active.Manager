@@ -181,7 +181,7 @@ namespace University.Active.Manager.Storage.PgSql.Migrations
                     b.ToTable("institutes", (string)null);
                 });
 
-            modelBuilder.Entity("University.Active.Manager.Entity.Profile", b =>
+            modelBuilder.Entity("University.Active.Manager.Entity.User", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -242,7 +242,7 @@ namespace University.Active.Manager.Storage.PgSql.Migrations
                     b.HasKey("Id")
                         .HasName("pk_profiles");
 
-                    b.ToTable("Profiles");
+                    b.ToTable("Users");
 
                     b.HasDiscriminator<string>("ProfileType");
 
@@ -278,7 +278,7 @@ namespace University.Active.Manager.Storage.PgSql.Migrations
 
             modelBuilder.Entity("University.Active.Manager.Entity.Student", b =>
                 {
-                    b.HasBaseType("University.Active.Manager.Entity.Profile");
+                    b.HasBaseType("University.Active.Manager.Entity.User");
 
                     b.Property<byte>("Course")
                         .HasColumnType("smallint")
@@ -296,7 +296,7 @@ namespace University.Active.Manager.Storage.PgSql.Migrations
 
             modelBuilder.Entity("University.Active.Manager.Entity.UniversityAdministrator", b =>
                 {
-                    b.HasBaseType("University.Active.Manager.Entity.Profile");
+                    b.HasBaseType("University.Active.Manager.Entity.User");
 
                     b.Property<string>("AdministrationDepartment")
                         .HasColumnType("text")

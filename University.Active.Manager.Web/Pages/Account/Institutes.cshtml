@@ -1,0 +1,35 @@
+﻿@page
+@using University.Active.Manager.Contracts;
+@model University.Active.Manager.Web.Pages.Account.InstitutesModel
+@{
+    Layout = "Shared/_Layout";
+}
+
+@if (Model.Institutes != null)
+{
+    foreach (var institute in Model.Institutes)
+    {
+        <tr>
+            <td> @institute.Id </td>
+            <td>@institute.Name</td>
+            <td>
+                <!-- <snippet_Edit> -->
+                <a asp-page="./Edit" asp-route-id="@institute.Id">Edit</a> |
+                <!-- </snippet_Edit> -->
+                <!-- <snippet_Delete> -->
+                <button type="submit" asp-page-handler="delete" asp-route-id="@institute.Id">delete</button>
+                <!-- </snippet_Delete> -->
+            </td>
+        </tr>
+    }
+}
+
+
+<form method="post">
+
+    <input asp-for="InstituteModel.Name" />
+    <select asp-for="InstituteModel.Specialty" asp-items="Html.GetEnumSelectList<Specialty>()">
+        <option value="">Выберите специальность</option>
+    </select>
+
+</form>

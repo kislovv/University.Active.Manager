@@ -5,6 +5,6 @@ namespace University.Active.Manager.Abstraction;
 
 public interface IProfileService
 {
-    Task<Profile> SaveProfile(Profile profile);
-    Task<Profile> Login(string login, string password);
+    Task<User> SaveProfile(User profile);
+    Task<User> Login(string login, string password);
 }

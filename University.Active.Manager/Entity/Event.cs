@@ -16,7 +16,7 @@ public class Event
     /// <summary>
     /// Список участников
     /// </summary>
-    public List<Student> Students { get; set; }
+    public List<User> Participants { get; set; }
 
     /// <summary>
     /// Роли в рамках мероприятия
@@ -56,5 +56,5 @@ public class Event
     /// <summary>
     /// Создатель мероприятия
     /// </summary>
-    public UniversityAdministrator Creator { get; set; }
+    public User Creator { get; set; }
 } 

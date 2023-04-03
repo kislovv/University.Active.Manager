@@ -28,7 +28,7 @@ public class Institute
     public List<Subject> Subjects { get; set; }
     
     /// <summary>
-    /// Список студентов прикрепленных к институту
+    /// Список пользователей закрепленных за институтом
     /// </summary>
-    public List<Student> Students { get; set; }
+    public List<User> Users { get; set; }
 }
