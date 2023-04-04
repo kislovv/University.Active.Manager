@@ -31,4 +31,6 @@ public class EventRole
     /// События в которых используется данная роль
     /// </summary>
     public List<Event> Events { get; set; }
+
+    public List<Participation> Participants { get; set; } 
 }

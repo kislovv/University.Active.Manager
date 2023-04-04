@@ -29,9 +29,10 @@ namespace University.Active.Manager.Web.Pages.Account
             Institutes = await _instituteRepository.GetAllInstitutes();
         }
 
-        public async Task OnPostAddAsync()
+        public async Task OnPostAsync()
         {
-
+            var institute = _mapper.Map<Institute>(InstituteModel);
+            await _instituteRepository.AddInstitute(institute);
         }
 
     }

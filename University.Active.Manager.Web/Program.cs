@@ -1,10 +1,13 @@
+using System.Linq;
+using System.Text;
 using AutoMapper;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 using University.Active.Manager.Abstraction;
-using University.Active.Manager.Entity;
 using University.Active.Manager.Services;
 using University.Active.Manager.Storage.PgSql;
 using University.Active.Manager.Utilities;
@@ -12,6 +15,22 @@ using University.Active.Manager.Web.Configuration;
 
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddAuthorization();
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>
+{
+    opt.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        ValidIssuer = builder.Configuration["JwtOptions:Issuer"],
+        ValidAudience = builder.Configuration["JwtOptions:Audience"],
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JwtOptions:Key"]))
+    };
+});
+
 
 //Добавление БД (метод расширения в проекте Storage)
 builder.Services.AddDatabase(builder.Configuration);
@@ -21,7 +40,7 @@ builder.Services.AddRazorPages();
 
 //Примеры сервисов (Event и репозитория)
 builder.Services.AddTransient<IEventService, EventService>();
-
+builder.Services.AddSingleton<ITokenService, TokenService>();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -34,8 +53,12 @@ builder.Services.AddSingleton(new MapperConfiguration(mc =>
 
 builder.Services.Configure<HashOptions>(builder.Configuration.GetSection("Hash"));
 builder.Services.AddSingleton<HashHelper>();
+builder.Services.Configure<TokenOptions>(builder.Configuration.GetSection("JwtOptions"));
 
 var app = builder.Build();
+
+app.UseAuthentication();
+app.UseAuthorization();
 
 if (app.Environment.IsDevelopment())
 {
@@ -44,31 +67,7 @@ if (app.Environment.IsDevelopment())
 }
 
 //Пример метода Map без указания метода
-app.Map("/", async context =>
-{
-    //может вернуть Null
-    var eventService = context.RequestServices.GetService<IEventService>();
-    if (eventService != null) 
-        await context.Response.WriteAsJsonAsync(await eventService.GetAllActiveEvents());
-});
-
-app.MapPost("/addSubject", async (Subject subject, ISubjectRepository subjectRepository, IMapper mapper) =>
-{
-    var result = await subjectRepository.AddSubject(subject);
-    
-    return Results.Ok(result);
-});
-
-app.MapPost("/addInstitute",
-    async (Institute institute, IInstituteRepository instituteRepository, IMapper mapper) =>
-    {
-        var result = await instituteRepository.AddInstitute(mapper.Map<Institute>(institute));
-        
-        return Results.Ok(result);
-    });
-
-//Подключение в цепочку статических файлов
-app.UseStaticFiles();
+app.Map("/", (IConfiguration appConfig) => $"{string.Join("\r\n",appConfig.AsEnumerable().Select(x=> $"{x.Key} : {x.Value} "))} ");
 
 //Подключение анализ на сопоставление запроса с  RazorPage 
 app.MapRazorPages();

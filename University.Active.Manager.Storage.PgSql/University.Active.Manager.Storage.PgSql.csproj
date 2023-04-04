@@ -25,4 +25,8 @@
       <ProjectReference Include="..\University.Active.Manager\University.Active.Manager.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Migrations" />
+    </ItemGroup>
+
 </Project>

@@ -18,10 +18,11 @@ public class EventEntityConfiguration : IEntityTypeConfiguration<Event>
             .HasMaxLength(EventMeta.PlaceMaxLength);
 
         builder.HasOne(ev => ev.Creator)
-            .WithMany(administrator => administrator.CreatedEvents)
-            .HasForeignKey(x=> x.CreatorId);
+            .WithMany(u => u.CreatedEvents)
+            .HasForeignKey(ev=> ev.CreatorId);
 
         builder.HasMany(ev => ev.Participants)
-            .WithMany(us => us.ParticipantEvents);
+            .WithOne(us => us.Event)
+            .HasForeignKey(p => p.EventId);
     }
 }

@@ -8,23 +8,31 @@ namespace University.Active.Manager.Services;
 public class ProfileService : IProfileService
 {
 
-    private readonly IProfileRepository _profileRepository;
+    private readonly IUserRepository _userRepository;
     private readonly HashHelper _hashHelper;
-    public ProfileService(IProfileRepository profileRepository, HashHelper hashHelper)
+    public ProfileService(IUserRepository userRepository, HashHelper hashHelper)
     {
-        _profileRepository = profileRepository;
+        _userRepository = userRepository;
         _hashHelper = hashHelper;
     }
     public async Task<User> SaveProfile(User profile)
     {
         profile.Password = _hashHelper.GetHashPassword(profile.Password);
-        var result = await _profileRepository.AddProfile(profile);
+        var result = await _userRepository.AddUser(profile);
 
         return result;
     }
 
-    public Task<User> Login(string login, string password)
+    public async Task<User> Login(string login, string password)
     {
-        throw new System.NotImplementedException();
+        var user = await _userRepository.GetUserByLogin(login);
+        
+        //Если мы нашли пользователя но пароли не совпали - вернем пустоту, в дальнейшем сделаем Result класс для таких случаев
+        if (user != null && user.Password != _hashHelper.GetHashPassword(password))
+        {
+            return null;
+        }
+
+        return user;
     }
 }

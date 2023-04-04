@@ -4,7 +4,7 @@ using University.Active.Manager.Entity;
 
 namespace University.Active.Manager.Storage.PgSql.Configuration;
 
-public class ProfileEntityConfiguration : IEntityTypeConfiguration<User>
+public class UserEntityConfiguration : IEntityTypeConfiguration<User>
 {
     public void Configure(EntityTypeBuilder<User> builder)
     {
@@ -28,5 +28,11 @@ public class ProfileEntityConfiguration : IEntityTypeConfiguration<User>
         
         builder.Property(x => x.LastName)
             .IsRequired();
+
+        builder.HasMany(u => u.ParticipantsEvent)
+            .WithOne(p => p.User)
+            .HasForeignKey(p => p.UserId);
+
+        builder.HasMany(u => u.ChooseSubjects).WithOne(ch => ch.Participant).HasForeignKey(ch => ch.ParticipantId);
     }
 }

@@ -18,7 +18,8 @@ public static class Entry
     {
         serviceCollection.AddTransient<IEventRepository, EventRepository>();
         serviceCollection.AddTransient<ISubjectRepository, SubjectRepository>();
-        serviceCollection.AddTransient<IProfileRepository, ProfileRepository>();
+        serviceCollection.AddTransient<IUserRepository, UserRepository>();
+        serviceCollection.AddTransient<IInstituteRepository, InstituteRepository>();
         return serviceCollection.AddDbContext<AppDbContext>(optionsAction => 
         {
             optionsAction.UseNpgsql(configuration["App:DbConnectionString"]);

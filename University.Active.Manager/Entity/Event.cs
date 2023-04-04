@@ -16,12 +16,18 @@ public class Event
     /// <summary>
     /// Список участников
     /// </summary>
-    public List<User> Participants { get; set; }
+    public List<Participation> Participants { get; set; }
 
     /// <summary>
     /// Роли в рамках мероприятия
     /// </summary>
     public List<EventRole> EventRoles { get; set; }
+
+    /// <summary>
+    /// Институт за которым закреплено мероприятие 
+    /// </summary>
+    public Institute Institute { get; set; }
+    public long InstituteId { get; set; }
     
     /// <summary>
     /// Признак завершенности

@@ -20,6 +20,10 @@ public class InstituteEntityConfiguration : IEntityTypeConfiguration<Institute>
                 v => (Specialty)Enum.Parse(typeof(Specialty), v))
             .HasMaxLength(InstituteMeta.SpecialtyMaxLength)
             .IsRequired();
-        
+
+        builder.HasMany(i => i.Events)
+            .WithOne(ev => ev.Institute)
+            .HasForeignKey(ev => ev.InstituteId);
+
     }
 }

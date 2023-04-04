@@ -33,6 +33,10 @@ public class SignUp : PageModel
 
     public async Task OnPostAsync()
     {
+        if (UserModel.Password != UserModel.ConfirmPassword)
+        {
+            // TODO: Validation
+        }
         var user = _mapper.Map<User>(UserModel);
         user.Institute = Institutes.SelectedValue as Institute;
         

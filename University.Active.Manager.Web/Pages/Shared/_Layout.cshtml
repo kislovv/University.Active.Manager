@@ -12,12 +12,12 @@
         <a asp-page="Home">Профиль</a> | <a a asp-page="About">About</a> |
         @if (this.User.Identities.Any(x => x.NameClaimType == "UserId"))
         {
-            <button asp-page-handler="Logout">Войти</button>
+            <button asp-page-handler="/Account/Logout">Выйти</button>
         }
         else
         {
-            <button asp-page="Login">Войти</button>
-            <button asp-page="SignUp">Зарегестрироваться</button>
+            <button asp-page="./Account/Login">Войти</button>
+            <button asp-page="./Account/SignUp">Зарегестрироваться</button>
         }
         </div>
     <div>

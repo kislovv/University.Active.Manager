@@ -67,7 +67,7 @@ public abstract class User
     /// <summary>
     /// Список мероприятий в которых участвовал пользователь
     /// </summary>
-    public List<Event> ParticipantEvents { get; set; }
+    public List<Participation> ParticipantsEvent { get; set; }
     
     /// <summary>
     /// Список мероприятий в которые пользователь создал
@@ -79,8 +79,5 @@ public abstract class User
     /// </summary>
     public List<ChooseSubject> ChooseSubjects { get; set; }
 
-    /// <summary>
-    /// Роли которые принимал студент на мероприятиях
-    /// </summary>
-    public List<EventRole> EventRoles { get; set; }
+    public uint TotalScore { get; set; }
 }

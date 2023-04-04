@@ -31,4 +31,9 @@ public class Institute
     /// Список пользователей закрепленных за институтом
     /// </summary>
     public List<User> Users { get; set; }
+
+    /// <summary>
+    /// Список мероприятий закрепленных за данным институтом
+    /// </summary>
+    public List<Event> Events { get; set; }
 }

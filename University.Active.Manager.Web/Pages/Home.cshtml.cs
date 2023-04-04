@@ -1,10 +1,11 @@
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using University.Active.Manager.Abstraction;
 
 namespace University.Active.Manager.Web.Pages;
-
+[Authorize(Roles = "Student, Manager, Admin")]
 public class Home : PageModel
 {
     private readonly IEventService _eventService;
@@ -15,9 +16,8 @@ public class Home : PageModel
         _eventService = eventService;
         _mapper = mapper;
     }
-    public async Task OnGetAsync()
-    {
-
-       
+    public async Task<PageResult> OnGetAsync()
+    { 
+        return Page();
     }
 }

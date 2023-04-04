@@ -24,8 +24,9 @@ public class Subject
     /// <summary>
     /// Институт в котором есть этот предмет
     /// </summary>
-    public Institute Insitute { get; set; }
-    public long InsituteId { get; set; }
+    public Institute Institute { get; set; }
+    
+    public long InstituteId { get; set; }
 
     /// <summary>
     /// Максимальный балл доступный для списания по этому предмету
