@@ -6,7 +6,7 @@ namespace University.Active.Manager.Entity;
 /// <summary>
 /// Модель пользователя
 /// </summary>
-public abstract class User
+public class User
 {
     /// <summary>
     /// Идентификатор пользователя

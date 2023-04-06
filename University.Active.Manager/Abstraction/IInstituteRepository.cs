@@ -10,4 +10,8 @@ public interface IInstituteRepository
     Task<List<Entity.Institute>> GetAllInstitutes();
 
     Task<Institute> AddInstitute(Institute institute);
+
+    Task<Institute> GetInstituteById(long id);
+
+    Task<bool> RemoveInstitute(Institute institute);
 }

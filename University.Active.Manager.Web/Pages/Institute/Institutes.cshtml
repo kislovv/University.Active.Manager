@@ -1,29 +1,34 @@
 ﻿@page
 @using University.Active.Manager.Contracts;
-@model University.Active.Manager.Web.Pages.Account.InstitutesModel
+@model University.Active.Manager.Web.Pages.Institute.InstitutesModel
 @{
+    ViewBag.Title = "Админка институтов";
     Layout = "Shared/_Layout";
 }
 
 @if (Model.Institutes != null)
 {
-    foreach (var institute in Model.Institutes)
-    {
-        <tr>
-            <td> @institute.Id </td>
-            <td>@institute.Name</td>
-            <td>
-                <!-- <snippet_Edit> -->
-                <a asp-page="./Edit" asp-route-id="@institute.Id">Edit</a> |
-                <!-- </snippet_Edit> -->
-                <!-- <snippet_Delete> -->
-                <button type="submit" asp-page-handler="delete" asp-route-id="@institute.Id">delete</button>
-                <!-- </snippet_Delete> -->
-            </td>
-        </tr>
-    }
+    <table>
+        @foreach (var institute in Model.Institutes)
+        {
+            <tr>
+                <td> @institute.Id </td>
+                <td>@institute.Name</td>
+                <td>
+                    
+                    <form method="post">
+                        <!-- <snippet_Edit> -->
+                        <a asp-page="./Edit" asp-route-id="@institute.Id">Edit</a> |
+                        <!-- </snippet_Edit> -->
+                        <!-- <snippet_Delete> -->
+                        <button type="submit" asp-page-handler="delete" asp-route-id="@institute.Id">delete</button>
+                    </form>
+                    <!-- </snippet_Delete> -->
+                </td>
+            </tr>
+        }
+    </table>
 }
-
 
 <form method="post">
 

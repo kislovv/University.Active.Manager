@@ -2,6 +2,7 @@
 @model University.Active.Manager.Web.Pages.Account.Login
 
 @{
+    ViewBag.Title = "Авторизация";
     Layout = "Shared/_Layout";
 }
 
@@ -16,4 +17,6 @@
         </p>
         <input type="submit" value="Отправить" />
     </form>
+    
+    <p hidden="@Model.IsAuth">Введен неверный логин или пароль! Данный пользователь не найден!</p>
 </div>

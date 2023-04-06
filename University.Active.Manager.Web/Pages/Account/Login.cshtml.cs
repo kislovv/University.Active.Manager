@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using University.Active.Manager.Abstraction;
@@ -6,6 +7,7 @@ using University.Active.Manager.Contracts.User;
 
 namespace University.Active.Manager.Web.Pages.Account;
 
+[AllowAnonymous]
 public class Login : PageModel
 {
     private readonly IProfileService _profileService;
@@ -27,7 +29,12 @@ public class Login : PageModel
         IsAuth = user != null;
         if (user != null)
         {
-            Token = _tokenService.BuildToken(user); 
+            Token = _tokenService.BuildToken(user);
+            Redirect("../Home");
+        }
+        else
+        {
+            RedirectToPage(); 
         }
     }
 }

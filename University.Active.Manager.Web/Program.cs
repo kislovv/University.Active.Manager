@@ -1,5 +1,7 @@
 using System.Linq;
+using System.Net;
 using System.Text;
+using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -17,7 +19,10 @@ using University.Active.Manager.Web.Configuration;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddAuthorization();
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>
+builder.Services.AddAuthentication(opt =>
+{
+    opt.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(opt =>
 {
     opt.TokenValidationParameters = new TokenValidationParameters
     {
@@ -40,6 +45,7 @@ builder.Services.AddRazorPages();
 
 //Примеры сервисов (Event и репозитория)
 builder.Services.AddTransient<IEventService, EventService>();
+builder.Services.AddTransient<IProfileService, ProfileService>();
 builder.Services.AddSingleton<ITokenService, TokenService>();
 
 builder.Services.AddEndpointsApiExplorer();
@@ -57,8 +63,20 @@ builder.Services.Configure<TokenOptions>(builder.Configuration.GetSection("JwtOp
 
 var app = builder.Build();
 
+app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.UseStatusCodePages(context => {
+    var response = context.HttpContext.Response;
+
+    if (response.StatusCode == (int)HttpStatusCode.Unauthorized)
+    {
+        response.Redirect("/Account/Login");
+    }
+
+    return Task.CompletedTask;
+});
 
 if (app.Environment.IsDevelopment())
 {

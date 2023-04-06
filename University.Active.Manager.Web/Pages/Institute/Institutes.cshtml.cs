@@ -1,13 +1,12 @@
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using University.Active.Manager.Abstraction;
 using University.Active.Manager.Contracts;
-using University.Active.Manager.Entity;
 
-namespace University.Active.Manager.Web.Pages.Account
+namespace University.Active.Manager.Web.Pages.Institute
 {
     public class InstitutesModel : PageModel
     {
@@ -20,7 +19,7 @@ namespace University.Active.Manager.Web.Pages.Account
             _mapper = mapper;
         }
 
-        public List<Institute> Institutes { get; set; }
+        public List<Entity.Institute> Institutes { get; set; }
 
         [BindProperty]
         public InstituteModel InstituteModel { get; set; }
@@ -31,8 +30,22 @@ namespace University.Active.Manager.Web.Pages.Account
 
         public async Task OnPostAsync()
         {
-            var institute = _mapper.Map<Institute>(InstituteModel);
+            var institute = _mapper.Map<Entity.Institute>(InstituteModel);
             await _instituteRepository.AddInstitute(institute);
+            
+            Institutes = await _instituteRepository.GetAllInstitutes();
+        }
+        
+        public async Task<IActionResult> OnPostDeleteAsync(int id)
+        {
+            var institute = await _instituteRepository.GetInstituteById(id);
+ 
+            if (institute != null)
+            {
+                await _instituteRepository.RemoveInstitute(institute);
+            }
+ 
+            return RedirectToPage();
         }
 
     }

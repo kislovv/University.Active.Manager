@@ -11,7 +11,7 @@ public class AppDbContext : DbContext
     public DbSet<Subject> Subjects => Set<Subject>();
     public DbSet<EventRole> Roles => Set<EventRole>();
     public DbSet<User> Users => Set<User>();
-    public DbSet<Participation> Participants => Set<Participation>();
+    public DbSet<Participation> Participating => Set<Participation>();
     public DbSet<ChooseSubject> ChooseSubjects => Set<ChooseSubject>();
     
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
@@ -24,6 +24,7 @@ public class AppDbContext : DbContext
         modelBuilder.ApplyConfiguration(new InstituteEntityConfiguration());
         modelBuilder.ApplyConfiguration(new UserEntityConfiguration());
         modelBuilder.ApplyConfiguration(new SubjectEntityConfiguration());
+        modelBuilder.ApplyConfiguration(new ParticipantEntityConfiguration());
         
         
         base.OnModelCreating(modelBuilder);

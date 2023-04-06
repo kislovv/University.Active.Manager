@@ -38,10 +38,10 @@ public class SignUp : PageModel
             // TODO: Validation
         }
         var user = _mapper.Map<User>(UserModel);
-        user.Institute = Institutes.SelectedValue as Institute;
+        user.Institute = Institutes.SelectedValue as Entity.Institute;
         
         await _profileService.SaveProfile(user);
         
-        Redirect("Login");
+        Redirect("./Login");
     }
 }

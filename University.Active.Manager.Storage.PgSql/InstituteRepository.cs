@@ -26,4 +26,25 @@ public class InstituteRepository : IInstituteRepository
         
         return result.Entity;
     }
+
+    public async Task<Institute?> GetInstituteById(long id)
+    {
+        return await _appDbContext.Institutes
+            .Include(i => i.Subjects)
+            .Include(i => i.Users).FirstOrDefaultAsync(ev => ev.Id == id);
+    }
+
+    public async Task<bool> RemoveInstitute(Institute institute)
+    {
+        try
+        {
+            _appDbContext.Remove(institute);
+            await _appDbContext.SaveChangesAsync();
+            return true;
+        }
+        catch
+        {
+            return false;
+        }
+    }
 }

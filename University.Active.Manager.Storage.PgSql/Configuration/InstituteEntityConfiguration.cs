@@ -24,6 +24,5 @@ public class InstituteEntityConfiguration : IEntityTypeConfiguration<Institute>
         builder.HasMany(i => i.Events)
             .WithOne(ev => ev.Institute)
             .HasForeignKey(ev => ev.InstituteId);
-
     }
 }

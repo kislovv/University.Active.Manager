@@ -2,6 +2,7 @@
 @model University.Active.Manager.Web.Pages.Account.SignUp
 
 @{
+    ViewBag.Title = "Регистрация";
     Layout = "Shared/_Layout";
 }
 <div>
@@ -18,7 +19,7 @@
             <label asp-for="UserModel.MiddleName">Отчество</label><br />
             <input asp-for="UserModel.MiddleName" />
         </p>
-        
+
         <select asp-for="Institutes">
                               
             @foreach (var institute in Model.Institutes)
@@ -32,12 +33,16 @@
         </p>
 
         <p>
-            <label asp-for="UserModel.Password">Почта</label><br />
+            <label asp-for="UserModel.Login">Логин</label><br />
+            <input asp-for="UserModel.Login" />
+        </p>
+        <p>
+            <label asp-for="UserModel.Password">Пароль</label><br />
             <input asp-for="UserModel.Password" type="password" />
         </p>
         <p>
-            <label asp-for="UserModel.Password">Почта</label><br />
-            <input asp-for="UserModel.Password" type="password" />
+            <label asp-for="UserModel.ConfirmPassword">Подтверждение пароля</label><br />
+            <input asp-for="UserModel.ConfirmPassword" type="password" />
         </p>
         
 
